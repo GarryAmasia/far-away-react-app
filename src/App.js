@@ -26,6 +26,8 @@ function App() {
     );
   };
 
+  console.log(items);
+
   return (
     <div className="app">
       <Logo />
@@ -35,7 +37,7 @@ function App() {
         onHandleDelete={handleOnDelete}
         onToggleItems={handleToggleItem}
       />
-      <Stats />
+      <Stats items={items} />
     </div>
   );
 }

@@ -8,7 +8,10 @@ export const Form = ({ onAddItems }) => {
     event.preventDefault();
     // console.log(event);
 
-    if (!input) return;
+    if (!input) {
+      alert("There is no item...");
+      return;
+    }
 
     const newItem = {
       description: input,
