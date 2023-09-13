@@ -1,7 +1,12 @@
 import React, { useState } from "react";
 import { Item } from "./Item";
 
-export const PackingList = ({ items, onHandleDelete, onToggleItems }) => {
+export const PackingList = ({
+  items,
+  onHandleDelete,
+  onToggleItems,
+  setItems,
+}) => {
   const [sortBy, setSortBy] = useState("input");
 
   let sortedItem;
@@ -21,6 +26,16 @@ export const PackingList = ({ items, onHandleDelete, onToggleItems }) => {
       .slice()
       .sort((a, b) => Number(a.packed) - Number(b.packed));
   }
+
+  const handleOnDelete = () => {
+    const confirmed = window.confirm("Do you want to delete all items");
+
+    if (confirmed) {
+      setItems([]);
+    } else {
+      return;
+    }
+  };
 
   return (
     <div className="list">
@@ -47,6 +62,7 @@ export const PackingList = ({ items, onHandleDelete, onToggleItems }) => {
           <option value="description">Sort by description</option>
           <option value="packed">Sort by packed status</option>
         </select>
+        <button onClick={handleOnDelete}>clear list</button>
       </div>
     </div>
   );
